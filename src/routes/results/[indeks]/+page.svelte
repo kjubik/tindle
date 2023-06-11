@@ -15,7 +15,6 @@
 </script>
 
 <main>
-
     <div class="navbar">
         <h1><a href="/">tindle</a></h1>
         <input type="text" placeholder="Wpisz indeks">
