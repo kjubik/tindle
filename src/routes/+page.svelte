@@ -1,20 +1,24 @@
 <script>
     
-    
+    let searchId = ''
+
+    function search() {
+        window.location.href = `/results/${searchId}`
+    }
 
 </script>
 
 <main>
     <div class="container">
         <div id="header">
-            <h1>tindle</h1>
+            <h1><a href="/">tindle</a></h1>
             <h2>interfejs wyników z Technologii internetowych</h2>
         </div>
 
         <div id="actions">
             <div class="search-bar">
-                <input type="text" placeholder="Wpisz indeks">
-                <button>Szukaj</button>
+                <input type="text" bind:value={searchId} placeholder="Wpisz indeks">
+                <button on:click={search}>Search</button>
             </div>
             <p class="small-text">lub</p>
             <div class="button">
