@@ -6,6 +6,10 @@
         window.location.href = `/results/${searchId}`
     }
 
+    function handleKeyPress(event) {
+        if (event.key === 'Enter') search()
+    }
+
 </script>
 
 <main>
@@ -17,7 +21,7 @@
 
         <div id="actions">
             <div class="search-bar">
-                <input type="text" bind:value={searchId} placeholder="Wpisz indeks">
+                <input type="text" bind:value={searchId} on:keypress={ handleKeyPress } placeholder="Wpisz indeks">
                 <button on:click={search}>Search</button>
             </div>
             <p class="small-text">lub</p>
