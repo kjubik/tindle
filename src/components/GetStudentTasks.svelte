@@ -11,3 +11,7 @@
         console.log(list)
     })
 </script>
+
+<div>
+    <p>{ list.score }</p>
+</div>
