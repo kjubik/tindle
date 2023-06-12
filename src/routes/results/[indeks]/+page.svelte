@@ -56,7 +56,7 @@
     let searchId = ''
 
     function search() {
-        window.location.href = `/results/${searchId}`
+        if (searchId.split() != '') window.location.href = `/results/${searchId}`
     }
 
     function handleKeyPress(event) {
@@ -90,6 +90,7 @@
                         <th>Wynik</th>
                         <th>Czas</th>
                         <th>Termin</th>
+                        <th>Status</th>
                         <th>Info</th>
                     </tr>
                     </thead>
@@ -100,7 +101,7 @@
                                 <td>{task.score} / {task.maxScore}</td>
                                 <td>
                                     {#if task.time == null}
-                                        brak
+                                        <span style="color: #ccc">brak</span>
                                     {:else}
                                         {(new Date(task.time)).toLocaleString('pl', { dateStyle: 'medium', timeStyle: 'short' })}
                                     {/if}
@@ -109,15 +110,15 @@
                                 <td>
                                     {#if task.time != null }
                                         {#if task.time <= task.Deadline}
-                                            zaliczone
+                                            <span style="color: green">zaliczone</span>
                                         {:else}
-                                            spóźnione
+                                            <span style="color: orange">spóźnione</span>
                                         {/if}
                                     {:else}
                                         {#if new Date(task.Deadline) >= new Date()}
-                                            do zrobienia
+                                            <span style="color: grey">do wykonania</span>
                                         {:else}
-                                            niezaliczone
+                                            <span style="color: red">niezaliczone</span>
                                         {/if}
                                     {/if}
                                     
@@ -131,3 +132,30 @@
         </div>
     </div>
 </main>
+
+<style>
+    main {
+        width: 75%;
+        margin: 0 auto;
+        margin-bottom: 64px;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+</style>

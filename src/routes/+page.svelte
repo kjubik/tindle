@@ -3,7 +3,7 @@
     let searchId = ''
 
     function search() {
-        window.location.href = `/results/${searchId}`
+        if (searchId.split() != '') window.location.href = `/results/${searchId}`
     }
 
     function handleKeyPress(event) {
@@ -33,5 +33,10 @@
 </main>
 
 <style>
+
+main {
+    width: 80%;
+    margin: 0 auto;
+}
 
 </style>
