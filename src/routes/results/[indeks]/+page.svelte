@@ -149,28 +149,30 @@
 </main>
 
 <style>
-    main {
-        width: 75%;
-        margin: 0 auto;
-        margin-bottom: 64px;
-    }
 
-    table {
-        border-collapse: collapse;
-        width: 100%;
-    }
+main {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 64px;
+}
 
-    th, td {
-        padding: 8px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-    }
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
 
-    th {
-        background-color: #f2f2f2;
-    }
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
 
-    tbody tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
+th {
+    background-color: #f2f2f2;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
 </style>

@@ -26,7 +26,7 @@
             </div>
             <p class="small-text">lub</p>
             <div class="button">
-                <button>Zobacz wyniki wszystkich</button>
+                <a href="/results/all"><button>Zobacz wyniki wszystkich</button></a>
             </div>
         </div>
     </div>
