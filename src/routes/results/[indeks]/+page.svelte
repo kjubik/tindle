@@ -83,7 +83,7 @@
                     punkt
                 {:else if user_results.score >= 12 && user_results.score <= 14}
                     punktów
-                {:else if user_results.score % 10 >= 2 || user_results.score % 10 >= 5} 
+                {:else if user_results.score % 10 >= 2 && user_results.score % 10 <= 5} 
                     punkty 
                 {:else}
                     punktów
@@ -106,7 +106,7 @@
                         <th>Czas</th>
                         <th>Termin</th>
                         <th>Status</th>
-                        <th>Info</th>
+                        <!-- <th>Info</th> -->
                     </tr>
                     </thead>
                     <tbody>
@@ -138,7 +138,7 @@
                                     {/if}
                                     
                                 </td>
-                                <td>{task.info}</td>
+                                <!-- <td>{task.info}</td> -->
                         </tr>
                         {/each}
                     </tbody>
