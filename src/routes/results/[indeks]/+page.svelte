@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
 
     export let data
-    export let user_link = `http://bikol.vm.wmi.amu.edu.pl/dtin/results/${ data.data.indeks }`
+    let user_link = `http://bikol.vm.wmi.amu.edu.pl/dtin/results/${ data.data.indeks }`
     let user_results = []
     let tasks = []
         
