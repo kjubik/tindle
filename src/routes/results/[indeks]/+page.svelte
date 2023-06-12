@@ -15,33 +15,20 @@
 
             if (response.ok) {
                 user_results = await response.json()
-                taskKeys = Object.keys(user_results.tasks);
-                tasks = taskKeys.map(key => user_results.tasks[key]);
-                console.log(taskKeys, tasks)
+                // console.log("user results", user_results)
+                tasks = Object.keys(user_results.tasks).map(key => {
+                    const task = user_results.tasks[key];
+                    task.key = key; // Add the 'key' field to the task object
+                    return task;
+                });
+                console.log("tasks", tasks)
             }
         } catch (error) {
             console.log(error)
         }
     })
 
-    function matchPayloads(payload1, payload2) {
-        const matchedPayload = {};
 
-        // Matching Z2.x tasks
-        for (const task in payload1.tasks) {
-            if (payload2.hasOwnProperty(task)) {
-            matchedPayload[task] = {
-                time: payload1.tasks[task].time,
-                score1: payload1.tasks[task].score,
-                info1: payload1.tasks[task].info,
-                deadline: payload2[task].Deadline,
-                score2: payload2[task].Score
-            };
-            }
-        }
-
-        return matchedPayload;
-        }
 
     // search bar logic
 
@@ -84,9 +71,9 @@
                     </tr>
                     </thead>
                     <tbody>
-                        {#each tasks as task, i}
+                        {#each tasks as task}
                         <tr>
-                                <td>{taskKeys[i]}</td>
+                                <td>{task.key}</td>
                                 <td>{task.score}</td>
                                 <td>{(new Date(task.time)).toLocaleString('pl', { dateStyle: 'long', timeStyle: 'short' })}</td>
                         </tr>
