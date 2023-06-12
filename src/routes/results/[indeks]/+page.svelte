@@ -73,7 +73,22 @@
     <div class="content">
         <div class="left-column">
             <div class="points">
-                <h2>{user_results.score} punkty</h2>
+                <h2>
+                {#if user_results.score != null}
+                    {user_results.score}
+                {:else}
+                    brak
+                {/if}
+                {#if user_results.score == 1} 
+                    punkt
+                {:else if user_results.score >= 12 && user_results.score <= 14}
+                    punktów
+                {:else if user_results.score % 10 >= 2 || user_results.score % 10 >= 5} 
+                    punkty 
+                {:else}
+                    punktów
+                {/if}
+                </h2>
             </div>
             <div class="indeks">
                 <p>indeks <span>{ data.data.indeks }</span></p>
