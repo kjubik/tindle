@@ -1,5 +1,9 @@
 <script>
     import { onMount } from "svelte";
+    import CompletedBox from "../../../components/completedBox.svelte";
+    import AfterDeadlineBox from "../../../components/afterDeadlineBox.svelte";
+    import NotCompletedBox from "../../../components/notCompletedBox.svelte";
+    import ToDoBox from "../../../components/toDoBox.svelte";
 
     export let data
     let user_link = `http://bikol.vm.wmi.amu.edu.pl/dtin/results/${ data.data.indeks }`
@@ -14,6 +18,7 @@
 
             if (response.ok) {
                 user_results = await response.json();
+                console.log(user_results)
                 tasks = Object.keys(user_results.tasks).map(key => {
                     const task = user_results.tasks[key];
                     task.key = key; // Add the 'key' field to the task object
@@ -50,35 +55,20 @@
         }
     });
 
-    
-    // search bar logic
-
-    let searchId = ''
-
-    function search() {
-        if (searchId.split() != '') window.location.href = `/results/${searchId}`
-    }
-
-    function handleKeyPress(event) {
-        if (event.key === 'Enter') search()
-    }
-
 </script>
 
-<main>
-    <div class="navbar">
-        <h1><a href="/">tindle</a></h1>
-        <input type="text" bind:value={searchId} on:keypress={ handleKeyPress } placeholder="Wpisz indeks">
-        <button on:click={search}>Search</button>
-    <div class="content">
-        <div class="left-column">
-            <div class="points">
-                <h2>
-                {#if user_results.score != null}
-                    {user_results.score}
-                {:else}
-                    brak
-                {/if}
+<div class="max-w-screen-2xl mx-auto content py-8 px-16">
+    <div class="flex">
+        <div class="left-column w-1/4">
+            <div class="flex flex-col items-center justify-center text-center w-40 h-40 rounded-3xl border-4 border-primary-500 mb-3 glow-effect bg-gradient-to-t from-primary-200 to-transparent shadow-inner">
+                <h2 class="text-4xl font-bold text-dark leading-8">
+                    {#if user_results.score != null}
+                        {user_results.score}
+                    {:else}
+                        brak
+                    {/if}
+                </h2>
+                <p class="text-dark text-lg">
                 {#if user_results.score == 1}
                     punkt
                 {:else if user_results.score >= 12 && user_results.score <= 14}
@@ -88,91 +78,68 @@
                 {:else}
                     punktów
                 {/if}
-                </h2>
+                </p>
             </div>
-            <div class="indeks">
-                <p>indeks <span>{ data.data.indeks }</span></p>
+            <div class="flex items-center justify-center w-40"> 
+                <p class="text-lg text-dark">indeks <span class="font-bold text-primary-600">{ data.data.indeks }</span></p>
             </div>
         </div>
-        <div class="right-column">
+        <div class="right-column w-3/4">
             <div class="tasks">
-                <h2>Wyniki zadań</h2>
-                
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Numer</th>
-                        <th>Wynik</th>
-                        <th>Czas</th>
-                        <th>Termin</th>
-                        <th>Status</th>
-                        <!-- <th>Info</th> -->
-                    </tr>
-                    </thead>
-                    <tbody>
-                        {#each tasks as task}
-                        <tr>
-                                <td>{task.key}</td>
-                                <td>{task.score} / {task.maxScore}</td>
-                                <td>
-                                    {#if task.time == null}
-                                        <span style="color: #ccc">brak</span>
-                                    {:else}
-                                        {(new Date(task.time)).toLocaleString('pl', { dateStyle: 'medium', timeStyle: 'short' })}
-                                    {/if}
-                                </td>
-                                <td>{(new Date(task.Deadline)).toLocaleString('pl', { dateStyle: 'medium', timeStyle: 'short' })}</td>
-                                <td>
-                                    {#if task.time != null }
-                                        {#if task.time <= task.Deadline}
-                                            <span style="color: green">zaliczone</span>
-                                        {:else}
-                                            <span style="color: orange">spóźnione</span>
-                                        {/if}
-                                    {:else}
-                                        {#if new Date(task.Deadline) >= new Date()}
-                                            <span style="color: grey">do wykonania</span>
-                                        {:else}
-                                            <span style="color: red">niezaliczone</span>
-                                        {/if}
-                                    {/if}
-                                    
-                                </td>
-                                <!-- <td>{task.info}</td> -->
-                        </tr>
-                        {/each}
-                    </tbody>
-                </table>
+                <h2 class="text-2xl font-bold">Wyniki zadań</h2>
+                <div class="flex flex-col">
+                    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                      <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                        <div class="overflow-hidden">
+                            <table class="min-w-full text-left text-md font-light">
+                                <thead class="border-b font-medium dark:border-neutral-500">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-4">Numer</th>
+                                        <th scope="col" class="px-6 py-4">Wynik</th>
+                                        <th scope="col" class="px-6 py-4">Czas oddania</th>
+                                        <th scope="col" class="px-6 py-4">Termin</th>
+                                        <th scope="col" class="px-6 py-4">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {#each tasks as task}
+                                    <tr class="border-b transition duration-300 ease-in-out">
+                                        <td class="whitespace-nowrap px-6 py-4 font-medium">{task.key}</td>
+                                        <td class="whitespace-nowrap px-6 py-4 font-medium">{task.score} / {task.maxScore}</td>
+                                        <td class="whitespace-nowrap px-6 py-4 font-medium">
+                                            {#if task.time == null}
+                                                <span class="text-gray-400">brak</span>
+                                            {:else if task.time == "1970-01-01T01:00:00+01:00"}
+                                                <span class="text-gray-400">oddano ręcznie</span>
+                                            {:else}
+                                                {(new Date(task.time)).toLocaleString('pl', { dateStyle: 'medium', timeStyle: 'short' })}
+                                            {/if}
+                                        </td>
+                                        <td class="whitespace-nowrap px-6 py-4 font-medium">{(new Date(task.Deadline)).toLocaleString('pl', { dateStyle: 'medium', timeStyle: 'short' })}</td>
+                                        <td class="whitespace-nowrap px-6 py-4 font-medium">
+                                            {#if task.time != null }
+                                                {#if task.time <= task.Deadline}
+                                                    <span class="text-green-500"><CompletedBox /></span>
+                                                {:else}
+                                                    <span class="text-orange-500"><AfterDeadlineBox /></span>
+                                                {/if}
+                                            {:else}
+                                                {#if new Date(task.Deadline) >= new Date()}
+                                                    <span class="text-blue-500"><ToDoBox /></span>
+                                                {:else}
+                                                    <span class="text-red-500"><NotCompletedBox /></span>
+                                                {/if}
+                                            {/if}
+                                        </td>
+                                    </tr>
+                                    {/each}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                  </div>
+                </div>
             </div>
         </div>
     </div>
-</main>
-
-<style>
-
-main {
-    width: 80%;
-    margin: 0 auto;
-    margin-bottom: 64px;
-}
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-th, td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-th {
-    background-color: #f2f2f2;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-</style>
+</div>

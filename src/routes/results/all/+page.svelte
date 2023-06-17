@@ -93,58 +93,37 @@
 		arrayAllUserResults = arrayAllUserResults.sort(sort);
 	}
 
-    console.log("bober", arrayAllTasksSpec)
-
 </script>
 
-<main>
-    <h1><a href="/">tindle</a></h1>
-
-    <table style="float: left; margin-left: 64px">
-        <thead>
-            <tr>
-            <th>Indeks <button on:click={sort("student_id")}>sortuj</button></th>
-            <th>Suma punktów<button on:click={sort("points_total")}>sortuj</button></th>
-            {#each arrayAllTasksSpec as task_spec, i}
-            <th>{task_spec.task_id} <button on:click={sort(`task_scores[${i}]`)}>sortuj</button></th>
-            {/each}
-            </tr>
-        </thead>
-        <tbody>
-            {#each arrayAllUserResults as data}
-            <tr>
-                <td><a href="/results/{data.student_id}">{data.student_id}</a></td>
-                <td>{data.points_total}</td>
-                {#each data.task_scores as score}
-                <td>{score}</td>
-                {/each}
-            </tr>
-            {/each}
-        </tbody>
-    </table>
-</main>
-  
-<style>
-
-table {
-    width: 20%;
-    margin: 0 auto;
-    margin-bottom: 64px;
-    border-collapse: collapse;
-}
-
-th, td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-th {
-    background-color: #f2f2f2;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-</style>
+<div class="max-w-screen-full mx-auto py-4 px-8">
+    <div class="flex flex-col">
+        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+            <div class="overflow-hidden">
+                <table class="min-w-full text-left text-sm font-light">
+                    <thead class="border-b font-medium">
+                        <tr>
+                            <th scope="col" class="px-2 py-4 border-r text-center">Indeks <button on:click={sort("student_id")} class="text-blue-500">sortuj</button></th>
+                            <th scope="col" class="px-2 py-4 border-r text-center">Suma<button on:click={sort("points_total")} class="text-blue-500">sortuj</button></th>
+                            {#each arrayAllTasksSpec as task_spec, i}
+                            <th scope="col" class="px-2 py-4 border-r text-center">{task_spec.task_id} <button on:click={sort(`task_scores[${i}]`)} class="text-blue-500">sortuj</button></th>
+                            {/each}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {#each arrayAllUserResults as data}
+                        <tr class="border-b transition duration-300 ease-in-out hover:bg-slate-100">
+                            <td class="whitespace-nowrap py-4 font-medium border-r text-center"><a href="/results/{data.student_id}" class="text-blue-500">{data.student_id}</a></td>
+                            <td class="whitespace-nowrap py-4 font-medium border-r text-center">{data.points_total}</td>
+                            {#each data.task_scores as score}
+                            <td class="whitespace-nowrap py-4 font-medium border-r text-center">{score}</td>
+                            {/each}
+                        </tr>
+                        {/each}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
