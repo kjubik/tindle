@@ -77,11 +77,7 @@ main {
 }
 
 #actions {
-    position: fixed;
-    margin: 0 auto;
-    left: 0;
-    right: 0;
-    bottom: 22em;
+    margin: 10em auto;
 }
 
 input {
