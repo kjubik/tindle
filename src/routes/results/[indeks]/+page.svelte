@@ -79,7 +79,7 @@
                 {:else}
                     brak
                 {/if}
-                {#if user_results.score == 1} 
+                {#if user_results.score == 1}
                     punkt
                 {:else if user_results.score >= 12 && user_results.score <= 14}
                     punktów
