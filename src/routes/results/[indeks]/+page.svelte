@@ -57,19 +57,21 @@
 
 </script>
 
-<div class="max-w-screen-2xl mx-auto content py-8 px-16">
+<div class="max-w-screen-xl mx-auto content py-8 px-8">
     <div class="flex">
-        <div class="left-column w-1/4">
-            <div class="flex flex-col items-center justify-center text-center w-40 h-40 rounded-3xl border-4 border-primary-500 mb-3 glow-effect bg-gradient-to-t from-primary-200 to-transparent shadow-inner">
-                <h2 class="text-4xl font-bold text-dark leading-8">
+        <div class="left-column w-1/6">
+            <div class="flex flex-col items-center justify-center text-center w-40 h-40 rounded-3xl border-2 border-primary-500 mb-3 glow-effect bg-gradient-to-t from-primary-900/20 to-bg shadow-inner text-lighter drop-shadow-basic">
+                <h2 class="text-4xl font-bold  leading-8">
                     {#if user_results.score != null}
                         {user_results.score}
                     {:else}
                         brak
                     {/if}
                 </h2>
-                <p class="text-dark text-lg">
-                {#if user_results.score == 1}
+                <p class="text-lg">
+                {#if user_results.score % 1 != 0}
+                    punkta
+                {:else if user_results.score == 1}
                     punkt
                 {:else if user_results.score >= 12 && user_results.score <= 14}
                     punktów
@@ -81,63 +83,62 @@
                 </p>
             </div>
             <div class="flex items-center justify-center w-40"> 
-                <p class="text-lg text-dark">indeks <span class="font-bold text-primary-600">{ data.data.indeks }</span></p>
+                <p class="text-lg text-light font-light">indeks <span class="font-medium text-primary-600">{ data.data.indeks }</span></p>
             </div>
         </div>
-        <div class="right-column w-3/4">
-            <div class="tasks">
-                <h2 class="text-2xl font-bold">Wyniki zadań</h2>
-                <div class="flex flex-col">
-                    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                      <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-                        <div class="overflow-hidden">
-                            <table class="min-w-full text-left text-md font-light">
-                                <thead class="border-b font-medium dark:border-neutral-500">
-                                    <tr>
-                                        <th scope="col" class="px-6 py-4">Numer</th>
-                                        <th scope="col" class="px-6 py-4">Wynik</th>
-                                        <th scope="col" class="px-6 py-4">Czas oddania</th>
-                                        <th scope="col" class="px-6 py-4">Termin</th>
-                                        <th scope="col" class="px-6 py-4">Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {#each tasks as task}
-                                    <tr class="border-b transition duration-300 ease-in-out">
-                                        <td class="whitespace-nowrap px-6 py-4 font-medium">{task.key}</td>
-                                        <td class="whitespace-nowrap px-6 py-4 font-medium">{task.score} / {task.maxScore}</td>
-                                        <td class="whitespace-nowrap px-6 py-4 font-medium">
-                                            {#if task.time == null}
-                                                <span class="text-gray-400">brak</span>
-                                            {:else if task.time == "1970-01-01T01:00:00+01:00"}
-                                                <span class="text-gray-400">oddano ręcznie</span>
+        <div class="right-column w-5/6 py-8 px-8 border rounded-2xl border-outline">
+            <h2 class="text-2xl font-bold text-primary-500">Wyniki zadań</h2>
+            <div class="flex flex-col">
+                <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                    <div class="overflow-hidden">
+                        <table class="min-w-full text-left text-md font-light text-dark">
+                            <thead class="border-b font-medium border-primary-500/50 text-light">
+                                <tr>
+                                    
+                                    <th scope="col" class="px-6 py-4">Status</th>
+                                    <th scope="col" class="px-6 py-4">Numer</th>
+                                    <th scope="col" class="px-6 py-4">Wynik</th>
+                                    <th scope="col" class="px-6 py-4">Czas oddania</th>
+                                    <th scope="col" class="px-6 py-4">Termin</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {#each tasks as task}
+                                <tr class="border-b border-outline transition duration-300 ease-in-out">
+                                    <td class="whitespace-nowrap pl-10 py-4 font-medium">
+                                        {#if task.time != null }
+                                            {#if task.time <= task.Deadline}
+                                                <span class="text-green-500"><CompletedBox /></span>
                                             {:else}
-                                                {(new Date(task.time)).toLocaleString('pl', { dateStyle: 'medium', timeStyle: 'short' })}
+                                                <span class="text-orange-500"><AfterDeadlineBox /></span>
                                             {/if}
-                                        </td>
-                                        <td class="whitespace-nowrap px-6 py-4 font-medium">{(new Date(task.Deadline)).toLocaleString('pl', { dateStyle: 'medium', timeStyle: 'short' })}</td>
-                                        <td class="whitespace-nowrap px-6 py-4 font-medium">
-                                            {#if task.time != null }
-                                                {#if task.time <= task.Deadline}
-                                                    <span class="text-green-500"><CompletedBox /></span>
-                                                {:else}
-                                                    <span class="text-orange-500"><AfterDeadlineBox /></span>
-                                                {/if}
+                                        {:else}
+                                            {#if new Date(task.Deadline) >= new Date()}
+                                                <span class="text-blue-500"><ToDoBox /></span>
                                             {:else}
-                                                {#if new Date(task.Deadline) >= new Date()}
-                                                    <span class="text-blue-500"><ToDoBox /></span>
-                                                {:else}
-                                                    <span class="text-red-500"><NotCompletedBox /></span>
-                                                {/if}
+                                                <span class="text-red-500"><NotCompletedBox /></span>
                                             {/if}
-                                        </td>
-                                    </tr>
-                                    {/each}
-                                </tbody>
-                            </table>
-                        </div>
+                                        {/if}
+                                    </td>
+                                    <td class="whitespace-nowrap px-6 py-4 font-medium">{task.key}</td>
+                                    <td class="whitespace-nowrap px-6 py-4 font-medium">{task.score} / {task.maxScore}</td>
+                                    <td class="whitespace-nowrap px-6 py-4 font-medium">
+                                        {#if task.time == null}
+                                            <span class="text-outline">brak</span>
+                                        {:else if task.time == "1970-01-01T01:00:00+01:00"}
+                                            <span class="text-dark">oddano ręcznie</span>
+                                        {:else}
+                                            {(new Date(task.time)).toLocaleString('pl', { dateStyle: 'medium', timeStyle: 'short' })}
+                                        {/if}
+                                    </td>
+                                    <td class="whitespace-nowrap px-6 py-4 font-medium">{(new Date(task.Deadline)).toLocaleString('pl', { dateStyle: 'medium', timeStyle: 'short' })}</td>
+                                </tr>
+                                {/each}
+                            </tbody>
+                        </table>
                     </div>
-                  </div>
+                </div>
                 </div>
             </div>
         </div>

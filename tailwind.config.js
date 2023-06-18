@@ -15,7 +15,15 @@ export default {
           '800': '#159C7E',
           '900': '#12826E',
         },
-        'dark': '#1B1B1B'
+        'bg': '#1B1B1B',
+        'outline': '#343434',
+        'dark': '#868686',
+        'light': '#DDDDDD',
+        'lighter': '#FFFFFF',
+      },
+      dropShadow: {
+        'basic': '0 2px 4px rgba(28,221,175,0.25)',
+        'clickme': '0 2px 4px rgba(255, 255, 255, 0.07)'
       }
     },
   },

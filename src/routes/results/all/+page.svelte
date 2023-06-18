@@ -95,7 +95,7 @@
 
 </script>
 
-<div class="max-w-screen-full mx-auto py-4 px-8">
+<div class="max-w-screen-full mx-auto py-4 px-8 text-dark">
     <div class="flex flex-col">
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
@@ -112,7 +112,7 @@
                     </thead>
                     <tbody>
                         {#each arrayAllUserResults as data}
-                        <tr class="border-b transition duration-300 ease-in-out hover:bg-slate-100">
+                        <tr class="border-b transition duration-300 ease-in-out hover:bg-primary-500/10">
                             <td class="whitespace-nowrap py-4 font-medium border-r text-center"><a href="/results/{data.student_id}" class="text-blue-500">{data.student_id}</a></td>
                             <td class="whitespace-nowrap py-4 font-medium border-r text-center">{data.points_total}</td>
                             {#each data.task_scores as score}
