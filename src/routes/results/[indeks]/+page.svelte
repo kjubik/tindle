@@ -61,7 +61,7 @@
     <div class="flex">
         <div class="left-column w-1/6">
             <div class="flex items-center justify-center w-40 mt-2 mb-4"> 
-                <p class="text-3xl text-light font-light"><span class="font-medium text-primary-600">{ data.data.indeks }</span></p>
+                <p class="text-3xl text-light font-light"><span class="font-semibold text-white">{ data.data.indeks }</span></p>
             </div>
             <div class="flex flex-col items-center justify-center text-center w-40 h-40 rounded-3xl border-2 border-primary-500 mb-3 glow-effect bg-gradient-to-t from-primary-900/20 to-bg shadow-inner text-lighter drop-shadow-basic">
                 <h2 class="text-4xl font-bold  leading-8">
