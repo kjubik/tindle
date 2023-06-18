@@ -23,7 +23,7 @@
             <div class="flex items-center">
                 <input type="text" bind:value={searchId} on:keypress={handleKeyPress} placeholder="Szukaj indeksu" 
                 class="font-standard bg-outline caret-white placeholder:text-dark placeholder:font-standard text-white px-4 py-2 rounded-lg focus:outline-none focus:border-white focus:ring-2 focus:ring-primary-600 hover:drop-shadow-clickme focus:drop-shadow-basic">
-                <a href="/results/all" class="ml-4 bg-primary-900 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded">Zobacz wyniki wszystkich</a>
+                <a href="/results/all" class="ml-4 bg-primary-900 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded-lg">Zobacz wyniki wszystkich</a>
             </div>
         </div>
     </div>
