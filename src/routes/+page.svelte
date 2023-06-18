@@ -1,4 +1,5 @@
 <script>
+import Icon from '@iconify/svelte';
 
 let searchId = ''
 function search() {
@@ -31,4 +32,14 @@ function handleKeyPress(event) {
 
     <!-- https://tailwindcss.com/
     https://svelte.dev/ -->
+    <div class="fixed bottom-8 left-0 right-0 flex flex-col items-center text-center text-outline text-sm">
+        <div class="mb-2 font-bold">made with</div>
+        <div class="flex space-x-2 justify-center">
+            <a href="https://svelte.dev/" target=”_blank”><Icon icon="simple-icons:svelte" class="text-outline text-2xl"/></a>
+            <div class="text-lg font-bold">+</div>
+            <a href="https://tailwindcss.com/" target=”_blank”><Icon icon="file-icons:tailwind" class="text-outline text-2xl" /></a>
+            <div class="text-lg font-bold">+</div>
+            <a href="https://github.com/kjubik" target=”_blank”><Icon icon="mdi:heart" class="text-outline text-2xl"/></a>
+        </div>
+    </div>
 </main>
