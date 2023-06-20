@@ -7,6 +7,8 @@ Interfejs webowy do przeglądania wyników z przedmiotu Technologie internetowe.
 ### copy me to get started!
 
 ```
+git clone https://github.com/kjubik/tindle
+cd tindle
 npm i
 npm i tailwindcss
 npm i @iconify/svelte
