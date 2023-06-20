@@ -114,76 +114,102 @@
 		arrayAllUserResults = arrayAllUserResults.sort(sort);
 	}
 
+    // dane do html
+
+    let tabId = 0;
+
+    function handleTabClick(selectedTab) {
+    tabId = selectedTab;
+  }
+
 </script>
+
+
+<button on:click={() => handleTabClick(0)}>Moduł 2</button>
+<button on:click={() => handleTabClick(1)}>Moduł 3</button>
+<button on:click={() => handleTabClick(2)}>Moduł 5</button>
+<button on:click={() => handleTabClick(3)}>Moduły 6, 7</button>
+<button on:click={() => handleTabClick(4)}>Dodatkowe</button>
 
 <div class="max-w-screen-full mx-auto py-4 px-8 text-dark">
     <div class="flex flex-col">
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-            <div class="overflow-hidden">
-                <table class="min-w-full text-left text-sm font-light ">
-                    <thead class="border-b border-primary-500/50 font-medium">
-                        <tr class="text-light">
-                            <th scope="col" class="px-2 py-4 text-center">Indeks <button on:click={sort("student_id")} class="text-primary-500/30">sortuj</button></th>
-                            <th scope="col" class="px-2 py-4 text-center">Suma<button on:click={sort("points_total")} class="text-primary-500/30">sortuj</button></th>
-                            <th scope="col" class="px-2 py-4 text-center">D1<button on:click={sort(`student_id`)} class="text-primary-500/30">sortuj</button></th>
-                            <th scope="col" class="px-2 py-4 text-center">D2<button on:click={sort(`student_id`)} class="text-primary-500/30">sortuj</button></th>
-                            <th scope="col" class="px-2 py-4 text-center">D3<button on:click={ sort('D3')} class="text-primary-500/30">sortuj</button></th>
-                            <th scope="col" class="px-2 py-4 text-center">D4<button on:click={ sort('D4')} class="text-primary-500/30">sortuj</button></th>
-                            <th scope="col" class="px-2 py-4 text-center">D5<button on:click={ sort('D5')} class="text-primary-500/30">sortuj</button></th>
-                            <th scope="col" class="px-2 py-4 text-center">D6<button on:click={ sort('D6')} class="text-primary-500/30">sortuj</button></th>
-                            <th scope="col" class="px-2 py-4 text-center">Z21<button on:click={ sort('Z21')} class="text-primary-500/30">sortuj</button></th>
-                            <th scope="col" class="px-2 py-4 text-center">Z22<button on:click={ sort('Z22')} class="text-primary-500/30">sortuj</button></th>
-                            <th scope="col" class="px-2 py-4 text-center">Z23<button on:click={ sort('Z23')} class="text-primary-500/30">sortuj</button></th>
-                            <th scope="col" class="px-2 py-4 text-center">Z24<button on:click={ sort('Z24')} class="text-primary-500/30">sortuj</button></th>
-                            <th scope="col" class="px-2 py-4 text-center">Z25<button on:click={ sort('Z25')} class="text-primary-500/30">sortuj</button></th>
-                            <th scope="col" class="px-2 py-4 text-center">Z31<button on:click={ sort('Z31')} class="text-primary-500/30">sortuj</button></th>
-                            <th scope="col" class="px-2 py-4 text-center">Z32<button on:click={ sort('Z32')} class="text-primary-500/30">sortuj</button></th>
-                            <th scope="col" class="px-2 py-4 text-center">Z33<button on:click={ sort('Z33')} class="text-primary-500/30">sortuj</button></th>
-                            <th scope="col" class="px-2 py-4 text-center">Z51<button on:click={ sort('Z51')} class="text-primary-500/30">sortuj</button></th>
-                            <th scope="col" class="px-2 py-4 text-center">Z52<button on:click={ sort('Z52')} class="text-primary-500/30">sortuj</button></th>
-                            <th scope="col" class="px-2 py-4 text-center">Z53<button on:click={ sort('Z53')} class="text-primary-500/30">sortuj</button></th>
-                            <th scope="col" class="px-2 py-4 text-center">Z54<button on:click={ sort('Z54')} class="text-primary-500/30">sortuj</button></th>
-                            <th scope="col" class="px-2 py-4 text-center">Z61<button on:click={ sort('Z61')} class="text-primary-500/30">sortuj</button></th>
-                            <th scope="col" class="px-2 py-4 text-center">Z62<button on:click={ sort('Z62')} class="text-primary-500/30">sortuj</button></th>
-                            <th scope="col" class="px-2 py-4 text-center">Z63<button on:click={ sort('Z63')} class="text-primary-500/30">sortuj</button></th>
-                            <th scope="col" class="px-2 py-4 text-center">Z71<button on:click={ sort('Z71')} class="text-primary-500/30">sortuj</button></th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {#each arrayAllUserResults as data}
-                        <tr class="border-b border-outline transition duration-300 ease-in-out hover:bg-primary-500/10">
-                            <td class="whitespace-nowrap py-4 font-medium border-r border-outline text-center"><a href="/results/{data.student_id}" class="text-primary-500">{data.student_id}</a></td>
-                            <td class="whitespace-nowrap py-4 font-medium border-r border-outline text-center">{data.points_total}</td>
-                            <td class="whitespace-nowrap py-4 font-medium border-r border-outline text-center">{data.D1}</td>
-                            <td class="whitespace-nowrap py-4 font-medium border-r border-outline text-center">{data.D2}</td>
-                            <td class="whitespace-nowrap py-4 font-medium border-r border-outline text-center">{data.D3}</td>
-                            <td class="whitespace-nowrap py-4 font-medium border-r border-outline text-center">{data.D4}</td>
-                            <td class="whitespace-nowrap py-4 font-medium border-r border-outline text-center">{data.D5}</td>
-                            <td class="whitespace-nowrap py-4 font-medium border-r border-outline text-center">{data.D6}</td>
-                            <td class="whitespace-nowrap py-4 font-medium border-r border-outline text-center">{data.Z21}</td>
-                            <td class="whitespace-nowrap py-4 font-medium border-r border-outline text-center">{data.Z22}</td>
-                            <td class="whitespace-nowrap py-4 font-medium border-r border-outline text-center">{data.Z23}</td>
-                            <td class="whitespace-nowrap py-4 font-medium border-r border-outline text-center">{data.Z24}</td>
-                            <td class="whitespace-nowrap py-4 font-medium border-r border-outline text-center">{data.Z25}</td>
-                            <td class="whitespace-nowrap py-4 font-medium border-r border-outline text-center">{data.Z31}</td>
-                            <td class="whitespace-nowrap py-4 font-medium border-r border-outline text-center">{data.Z32}</td>
-                            <td class="whitespace-nowrap py-4 font-medium border-r border-outline text-center">{data.Z33}</td>
-                            <td class="whitespace-nowrap py-4 font-medium border-r border-outline text-center">{data.Z51}</td>
-                            <td class="whitespace-nowrap py-4 font-medium border-r border-outline text-center">{data.Z52}</td>
-                            <td class="whitespace-nowrap py-4 font-medium border-r border-outline text-center">{data.Z53}</td>
-                            <td class="whitespace-nowrap py-4 font-medium border-r border-outline text-center">{data.Z54}</td>
-                            <td class="whitespace-nowrap py-4 font-medium border-r border-outline text-center">{data.Z61}</td>
-                            <td class="whitespace-nowrap py-4 font-medium border-r border-outline text-center">{data.Z62}</td>
-                            <td class="whitespace-nowrap py-4 font-medium border-r border-outline text-center">{data.Z63}</td>
-                            <td class="whitespace-nowrap py-4 font-medium border-r border-outline text-center">{data.Z71}</td>
-                        </tr>
-                        {/each}
-                    </tbody>
-                </table>
+                <div class="overflow-hidden">
+                    <table class="">
+                        <thead class="">
+                            <tr class="">
+                                <th>Indeks</th>
+                                <th>Suma</th>
+                                {#if tabId === 0} <!-- Moduł 2 -->
+                                    <th>2.1</th>
+                                    <th>2.2</th>
+                                    <th>2.3</th>
+                                    <th>2.4</th>
+                                    <th>2.5</th>
+                                {:else if tabId === 1} <!-- Moduł 3 -->
+                                    <th>3.1</th>
+                                    <th>3.2</th>
+                                    <th>3.3</th>
+                                {:else if tabId === 2} <!-- Moduł 5 -->
+                                    <th>5.1</th>
+                                    <th>5.2</th>
+                                    <th>5.3</th>
+                                    <th>5.4</th>
+                                {:else if tabId === 3} <!-- Moduły 6, 7 -->
+                                    <th>6.1</th>
+                                    <th>6.2</th>
+                                    <th>6.3</th>
+                                    <th>7.1</th>
+                                {:else} <!-- Dodatkowe -->
+                                    <th>D1</th>
+                                    <th>D2</th>
+                                    <th>D3</th>
+                                    <th>D4</th>
+                                    <th>D5</th>
+                                    <th>D6</th>
+                                {/if}
+                            </tr>
+                        </thead>
+                        <tbody class="">
+                            {#each arrayAllUserResults as data}
+                                <tr>
+                                    <td><a href="/results/{data.student_id}" class="text-primary-500">{data.student_id}</a></td>
+                                    <td>{data.points_total}</td>
+                                    {#if tabId === 0} <!-- Moduł 2 -->
+                                        <td>{data.Z21}</td>
+                                        <td>{data.Z22}</td>
+                                        <td>{data.Z23}</td>
+                                        <td>{data.Z24}</td>
+                                        <td>{data.Z25}</td>
+                                    {:else if tabId === 1} <!-- Moduł 3 -->
+                                        <td>{data.Z31}</td>
+                                        <td>{data.Z32}</td>
+                                        <td>{data.Z33}</td>
+                                    {:else if tabId === 2} <!-- Moduł 5 -->
+                                        <td>{data.Z51}</td>
+                                        <td>{data.Z52}</td>
+                                        <td>{data.Z53}</td>
+                                        <td>{data.Z54}</td>
+                                    {:else if tabId === 3} <!-- Moduły 6, 7 -->
+                                        <td>{data.Z61}</td>
+                                        <td>{data.Z62}</td>
+                                        <td>{data.Z63}</td>
+                                        <td>{data.Z71}</td>
+                                    {:else} <!-- Dodatkowe -->
+                                        <td>{data.D1}</td>
+                                        <td>{data.D2}</td>
+                                        <td>{data.D3}</td>
+                                        <td>{data.D4}</td>
+                                        <td>{data.D5}</td>
+                                        <td>{data.D6}</td>
+                                    {/if}
+                                </tr>
+                            {/each}
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
         </div>
     </div>
 </div>
