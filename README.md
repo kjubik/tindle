@@ -4,9 +4,11 @@ Interfejs webowy do przeglądania wyników z przedmiotu Technologie internetowe.
 ![Svelte](https://img.shields.io/badge/svelte-%23f1413d.svg?style=for-the-badge&logo=svelte&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
-### copy me to get started!
+### skopiuj mnie i wklej!
 
 ```
+git clone https://github.com/kjubik/tindle
+cd tindle
 npm i
 npm i tailwindcss
 npm i @iconify/svelte
