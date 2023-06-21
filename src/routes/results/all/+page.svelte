@@ -1,5 +1,6 @@
 <script>
     import { onMount } from "svelte";
+    import Icon from '@iconify/svelte';
 
     let link = 'http://bikol.vm.wmi.amu.edu.pl/dtin/results'
     let info_link = 'http://bikol.vm.wmi.amu.edu.pl/dtin/tasks'
@@ -124,85 +125,85 @@
 
 </script>
 
+<div class="max-w-screen-xl mx-auto py-4 px-8 text-dark">
 
-<button on:click={() => handleTabClick(0)}>Moduł 2</button>
-<button on:click={() => handleTabClick(1)}>Moduł 3</button>
-<button on:click={() => handleTabClick(2)}>Moduł 5</button>
-<button on:click={() => handleTabClick(3)}>Moduły 6, 7</button>
-<button on:click={() => handleTabClick(4)}>Dodatkowe</button>
+    <button on:click={() => handleTabClick(0)} class=" text-white font-semibold py-2 px-4 rounded-lg mr-2 {tabId == 0 ? 'bg-primary-900' : 'bg-bg outline outline-1 outline-outline'}">Moduł 2</button>
+    <button on:click={() => handleTabClick(1)} class=" text-white font-semibold py-2 px-4 rounded-lg mr-2 {tabId == 1 ? 'bg-primary-900' : 'bg-bg outline outline-1 outline-outline'}">Moduł 3</button>
+    <button on:click={() => handleTabClick(2)} class=" text-white font-semibold py-2 px-4 rounded-lg mr-2 {tabId == 2 ? 'bg-primary-900' : 'bg-bg outline outline-1 outline-outline'}">Moduł 5</button>
+    <button on:click={() => handleTabClick(3)} class=" text-white font-semibold py-2 px-4 rounded-lg mr-2 {tabId == 3 ? 'bg-primary-900' : 'bg-bg outline outline-1 outline-outline'}">Moduły 6, 7</button>
+    <button on:click={() => handleTabClick(4)} class=" text-white font-semibold py-2 px-4 rounded-lg mr-2 {tabId == 4 ? 'bg-primary-900' : 'bg-bg outline outline-1 outline-outline'}">Dodatkowe</button>
 
-<div class="max-w-screen-full mx-auto py-4 px-8 text-dark">
-    <div class="flex flex-col">
+    <div class="flex flex-col border rounded-2xl border-outline px-12 mt-4">
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                 <div class="overflow-hidden">
-                    <table class="">
-                        <thead class="">
+                    <table class="min-w-full text-left text-md font-light text-dark">
+                        <thead class="border-b font-medium border-primary-500/50 text-light">
                             <tr class="">
-                                <th>Indeks</th>
-                                <th>Suma</th>
+                                <th scope="col" class="px-10 py-4">Indeks<button on:click={sort("student_id")}><Icon icon="pepicons-pop:sort" class="text-dark pl-2 text-2xl inline pb-1"/></button></th>
+                                <th scope="col" class="px-10 py-4">Suma<button on:click={sort("points_total")}><Icon icon="pepicons-pop:sort" class="text-dark pl-2 text-2xl inline pb-1"/></button></th>
                                 {#if tabId === 0} <!-- Moduł 2 -->
-                                    <th>2.1</th>
-                                    <th>2.2</th>
-                                    <th>2.3</th>
-                                    <th>2.4</th>
-                                    <th>2.5</th>
+                                    <th scope="col" class="px-10 py-4">2.1<button on:click={sort("Z21")}><Icon icon="pepicons-pop:sort" class="text-dark pl-2 text-2xl inline pb-1"/></button></th>
+                                    <th scope="col" class="px-10 py-4">2.2<button on:click={sort("Z22")}><Icon icon="pepicons-pop:sort" class="text-dark pl-2 text-2xl inline pb-1"/></button></th>
+                                    <th scope="col" class="px-10 py-4">2.3<button on:click={sort("Z23")}><Icon icon="pepicons-pop:sort" class="text-dark pl-2 text-2xl inline pb-1"/></button></th>
+                                    <th scope="col" class="px-10 py-4">2.4<button on:click={sort("Z24")}><Icon icon="pepicons-pop:sort" class="text-dark pl-2 text-2xl inline pb-1"/></button></th>
+                                    <th scope="col" class="px-10 py-4">2.5<button on:click={sort("Z25")}><Icon icon="pepicons-pop:sort" class="text-dark pl-2 text-2xl inline pb-1"/></button></th>
                                 {:else if tabId === 1} <!-- Moduł 3 -->
-                                    <th>3.1</th>
-                                    <th>3.2</th>
-                                    <th>3.3</th>
+                                    <th scope="col" class="px-10 py-4">3.1<button on:click={sort("Z31")}><Icon icon="pepicons-pop:sort" class="text-dark pl-2 text-2xl inline pb-1"/></button></th>
+                                    <th scope="col" class="px-10 py-4">3.2<button on:click={sort("Z32")}><Icon icon="pepicons-pop:sort" class="text-dark pl-2 text-2xl inline pb-1"/></button></th>
+                                    <th scope="col" class="px-10 py-4">3.3<button on:click={sort("Z33")}><Icon icon="pepicons-pop:sort" class="text-dark pl-2 text-2xl inline pb-1"/></button></th>
                                 {:else if tabId === 2} <!-- Moduł 5 -->
-                                    <th>5.1</th>
-                                    <th>5.2</th>
-                                    <th>5.3</th>
-                                    <th>5.4</th>
+                                    <th scope="col" class="px-10 py-4">5.1<button on:click={sort("Z51")}><Icon icon="pepicons-pop:sort" class="text-dark pl-2 text-2xl inline pb-1"/></button></th>
+                                    <th scope="col" class="px-10 py-4">5.2<button on:click={sort("Z52")}><Icon icon="pepicons-pop:sort" class="text-dark pl-2 text-2xl inline pb-1"/></button></th>
+                                    <th scope="col" class="px-10 py-4">5.3<button on:click={sort("Z53")}><Icon icon="pepicons-pop:sort" class="text-dark pl-2 text-2xl inline pb-1"/></button></th>
+                                    <th scope="col" class="px-10 py-4">5.4<button on:click={sort("Z54")}><Icon icon="pepicons-pop:sort" class="text-dark pl-2 text-2xl inline pb-1"/></button></th>
                                 {:else if tabId === 3} <!-- Moduły 6, 7 -->
-                                    <th>6.1</th>
-                                    <th>6.2</th>
-                                    <th>6.3</th>
-                                    <th>7.1</th>
+                                    <th scope="col" class="px-10 py-4">6.1<button on:click={sort("Z61")}><Icon icon="pepicons-pop:sort" class="text-dark pl-2 text-2xl inline pb-1"/></button></th>
+                                    <th scope="col" class="px-10 py-4">6.2<button on:click={sort("Z62")}><Icon icon="pepicons-pop:sort" class="text-dark pl-2 text-2xl inline pb-1"/></button></th>
+                                    <th scope="col" class="px-10 py-4">6.3<button on:click={sort("Z63")}><Icon icon="pepicons-pop:sort" class="text-dark pl-2 text-2xl inline pb-1"/></button></th>
+                                    <th scope="col" class="px-10 py-4">7.1<button on:click={sort("Z71")}><Icon icon="pepicons-pop:sort" class="text-dark pl-2 text-2xl inline pb-1"/></button></th>
                                 {:else} <!-- Dodatkowe -->
-                                    <th>D1</th>
-                                    <th>D2</th>
-                                    <th>D3</th>
-                                    <th>D4</th>
-                                    <th>D5</th>
-                                    <th>D6</th>
+                                    <th scope="col" class="px-10 py-4">D1<button on:click={sort("D1")}><Icon icon="pepicons-pop:sort" class="text-dark pl-2 text-2xl inline pb-1"/></button></th>
+                                    <th scope="col" class="px-10 py-4">D2<button on:click={sort("D2")}><Icon icon="pepicons-pop:sort" class="text-dark pl-2 text-2xl inline pb-1"/></button></th>
+                                    <th scope="col" class="px-10 py-4">D3<button on:click={sort("D3")}><Icon icon="pepicons-pop:sort" class="text-dark pl-2 text-2xl inline pb-1"/></button></th>
+                                    <th scope="col" class="px-10 py-4">D4<button on:click={sort("D4")}><Icon icon="pepicons-pop:sort" class="text-dark pl-2 text-2xl inline pb-1"/></button></th>
+                                    <th scope="col" class="px-10 py-4">D5<button on:click={sort("D5")}><Icon icon="pepicons-pop:sort" class="text-dark pl-2 text-2xl inline pb-1"/></button></th>
+                                    <th scope="col" class="px-10 py-4">D6<button on:click={sort("D6")}><Icon icon="pepicons-pop:sort" class="text-dark pl-2 text-2xl inline pb-1"/></button></th>
                                 {/if}
                             </tr>
                         </thead>
                         <tbody class="">
                             {#each arrayAllUserResults as data}
-                                <tr>
-                                    <td><a href="/results/{data.student_id}" class="text-primary-500">{data.student_id}</a></td>
-                                    <td>{data.points_total}</td>
+                                <tr class="border-b border-outline last:border-bg  transition duration-300 ease-in-out hover:text-lighter hover:bg-outline">
+                                    <td class="whitespace-nowrap pl-10 py-4 font-medium"><a href="/results/{data.student_id}" class="text-primary-500">{data.student_id}</a></td>
+                                    <td class="whitespace-nowrap pl-10 py-4 font-medium">{data.points_total}</td>
                                     {#if tabId === 0} <!-- Moduł 2 -->
-                                        <td>{data.Z21}</td>
-                                        <td>{data.Z22}</td>
-                                        <td>{data.Z23}</td>
-                                        <td>{data.Z24}</td>
-                                        <td>{data.Z25}</td>
+                                        <td class="whitespace-nowrap pl-10 py-4 font-medium">{data.Z21}</td>
+                                        <td class="whitespace-nowrap pl-10 py-4 font-medium">{data.Z22}</td>
+                                        <td class="whitespace-nowrap pl-10 py-4 font-medium">{data.Z23}</td>
+                                        <td class="whitespace-nowrap pl-10 py-4 font-medium">{data.Z24}</td>
+                                        <td class="whitespace-nowrap pl-10 py-4 font-medium">{data.Z25}</td>
                                     {:else if tabId === 1} <!-- Moduł 3 -->
-                                        <td>{data.Z31}</td>
-                                        <td>{data.Z32}</td>
-                                        <td>{data.Z33}</td>
+                                        <td  class="whitespace-nowrap pl-10 py-4 font-medium">{data.Z31}</td>
+                                        <td  class="whitespace-nowrap pl-10 py-4 font-medium">{data.Z32}</td>
+                                        <td  class="whitespace-nowrap pl-10 py-4 font-medium">{data.Z33}</td>
                                     {:else if tabId === 2} <!-- Moduł 5 -->
-                                        <td>{data.Z51}</td>
-                                        <td>{data.Z52}</td>
-                                        <td>{data.Z53}</td>
-                                        <td>{data.Z54}</td>
+                                        <td  class="whitespace-nowrap pl-10 py-4 font-medium">{data.Z51}</td>
+                                        <td  class="whitespace-nowrap pl-10 py-4 font-medium">{data.Z52}</td>
+                                        <td  class="whitespace-nowrap pl-10 py-4 font-medium">{data.Z53}</td>
+                                        <td  class="whitespace-nowrap pl-10 py-4 font-medium">{data.Z54}</td>
                                     {:else if tabId === 3} <!-- Moduły 6, 7 -->
-                                        <td>{data.Z61}</td>
-                                        <td>{data.Z62}</td>
-                                        <td>{data.Z63}</td>
-                                        <td>{data.Z71}</td>
+                                        <td  class="whitespace-nowrap pl-10 py-4 font-medium">{data.Z61}</td>
+                                        <td  class="whitespace-nowrap pl-10 py-4 font-medium">{data.Z62}</td>
+                                        <td  class="whitespace-nowrap pl-10 py-4 font-medium">{data.Z63}</td>
+                                        <td  class="whitespace-nowrap pl-10 py-4 font-medium">{data.Z71}</td>
                                     {:else} <!-- Dodatkowe -->
-                                        <td>{data.D1}</td>
-                                        <td>{data.D2}</td>
-                                        <td>{data.D3}</td>
-                                        <td>{data.D4}</td>
-                                        <td>{data.D5}</td>
-                                        <td>{data.D6}</td>
+                                        <td  class="whitespace-nowrap pl-10 py-4 font-medium">{data.D1}</td>
+                                        <td  class="whitespace-nowrap pl-10 py-4 font-medium">{data.D2}</td>
+                                        <td  class="whitespace-nowrap pl-10 py-4 font-medium">{data.D3}</td>
+                                        <td  class="whitespace-nowrap pl-10 py-4 font-medium">{data.D4}</td>
+                                        <td  class="whitespace-nowrap pl-10 py-4 font-medium">{data.D5}</td>
+                                        <td  class="whitespace-nowrap pl-10 py-4 font-medium">{data.D6}</td>
                                     {/if}
                                 </tr>
                             {/each}

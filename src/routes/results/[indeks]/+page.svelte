@@ -105,7 +105,7 @@
                             </thead>
                             <tbody>
                                 {#each tasks as task}
-                                <tr class="border-b border-outline transition duration-300 ease-in-out">
+                                <tr class="border-b border-outline last:border-bg transition duration-300 ease-in-out">
                                     <td class="whitespace-nowrap pl-10 py-4 font-medium">
                                         {#if task.time != null }
                                             {#if task.time <= task.Deadline}
