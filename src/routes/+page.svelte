@@ -12,6 +12,10 @@ function handleKeyPress(event) {
 
 </script>
 
+<div class="absolute top-0 px-auto bg-yellow-300 w-screen py-4 text-center">
+    <p class="font-semibold text-bg">Currently under construction</p>
+</div>
+
 <main class="container mx-auto px-4 py-32 select-none h-screen">
     <div id="header" class="text-center">
         <h1 class="text-6xl font-bold text-lighter">tindle</h1>
