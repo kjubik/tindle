@@ -13,7 +13,7 @@ function handleKeyPress(event) {
 </script>
 
 <div class="absolute top-0 px-auto bg-yellow-300 w-screen py-4 text-center">
-    <p class="font-semibold text-bg">Currently under construction</p>
+    <p class="font-semibold text-bg">Under construction</p>
 </div>
 
 <main class="container mx-auto px-4 py-32 select-none h-screen">
